@@ -1,0 +1,6 @@
+authomatic
+flask
+flask_login
+flask_orator
+flask-restful
+orator

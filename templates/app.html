@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title> Good Books - Udacity Project </title>
+</head>
+<body class="">
+
+    <div class="container">
+        <header class="header py-3">
+            <div class="row flex-nowrap justify-content-between align-items-center">
+                <div class="col-4 pt-1 d-none d-sm-block">
+                    <a href="https://udacity.com" target="_blank">Udacity.com</a>
+                </div>
+                <div class="col-4 text-center">
+                    <a class="header-logo text-dark" href="{{ url_for('index') }}"><span class="text-muted">Good</span>Books</a>
+                </div>
+                <div class="col-4 d-flex justify-content-end align-items-center">
+                    {% if current_user.is_authenticated %}
+                    <span class="px-2 text-xs">
+                        {{ current_user.name.split()[0] }}
+                    </span>
+                    <a class="btn btn-sm btn-outline-danger" href="{{ url_for('logout') }}" title="Logout">
+                        Logout
+                    </a>
+                    {% else %}
+                    <a href="{{ url_for('login_with', provider_name='google') }}" class="btn btn-sm btn-outline-secondary">
+                        <i class="ion-logo-google text-lg"></i><span>Google Sign in</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+        </header>
+
+        <div class="nav-scroller py-1 mb-2 shadow-smX border-top border-dark">
+            <nav class="nav d-flex justify-content-between ">
+                {% for category in categories %}
+                <a class="p-2 text-muted" href="{{ url_for('list_items', category_id=category.id) }}">{{ category.title }}</a>
+                {% endfor %}
+            </nav>
+        </div>
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="alert alert-info">
+                <ul class="list-group">
+                    {% for message in messages %}
+                    <li>{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% endif %}
+        {% endwith %}
+
+
+        <div class="" style="min-height:70vh">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2018</p>
+    </footer>
+
+    <!-- js -->
+    <script src="{{ url_for('static', filename='js/jquery-3.3.1.min.js') }}" charset="utf-8"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}" charset="utf-8"></script>
+</body>
+</html>

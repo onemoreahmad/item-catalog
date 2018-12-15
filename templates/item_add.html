@@ -1,0 +1,54 @@
+{% extends "app.html" %}
+
+{% block content%}
+
+<main role="main" class="container px-0 mt-4 mb-5">
+    <div class="d-flex align-items-center p-3 my-3   bg-light rounded">
+        <div class="lh-100 mr-auto">
+            <h3 class="mb-0 lh-100">Add new book</h3>
+        </div>
+    </div>
+
+    <div class="my-3 p-3 bg-grey rounded shadow-sm">
+        <form action="{{ url_for('store_item') }}" method="post">
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Book Name</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="title" placeholder="Book Name" required="required">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Category</label>
+                <div class="col-sm-10">
+                    <select name="category_id" id="category" class="form-control" required="required">
+                        {% for category in categories %}
+                        <option value="{{ category.id }}">{{ category.title }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticEmail" class="col-sm-2 col-form-label">Image URL</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="image" placeholder="Image URL">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label">Description</label>
+                <div class="col-sm-10">
+                    <textarea class="form-control" name="description" rows="7" required="required"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="inputPassword" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <button type="submit" class="btn btn-block btn-primary">Add Now</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</main>
+
+
+{% endblock %}
