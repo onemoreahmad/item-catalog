@@ -4,3 +4,4 @@ flask_login
 flask_orator
 flask-restful
 orator
+psycopg2-binary
