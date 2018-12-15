@@ -16,14 +16,13 @@ This web app is a project for the Udacity [FSND Course](https://www.udacity.com/
 
 ## How to Install
   1. Clone this rebo
-  2. Create a new database
-  3. Migrate tables & Seed categories
+  2. Install the project requirements `pip3 install -r requirements.txt`
+  3. Create a new database
+  4. Migrate tables & Seed categories
    `python3 db.py migrate --seed --path database/migrations --seed-path database/seeds`
-  4. Configure Google sign-in in app.py  
-  5. Install the project requirements `pip3 install -r requirements.txt`
+  5. Configure Google sign-in in app.py  
   6. Run application using `python3 app.py`
   7. Access the application locally using http://localhost:5000
-
 
 
 ## JSON Endpoints
