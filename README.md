@@ -16,7 +16,7 @@ This web app is a project for the Udacity [FSND Course](https://www.udacity.com/
 
 ## How to Install
   1. Clone this rebo
-  2. Install the project requirements `pip3 install -r requirements.txt`
+  2. Install the project requirements `sudo pip3 install --ignore-installed -r requirements.txt`
   3. Create a new database
   4. Migrate tables & Seed categories
    `python3 db.py migrate --seed --path database/migrations --seed-path database/seeds`
